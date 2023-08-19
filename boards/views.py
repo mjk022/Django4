@@ -1,11 +1,10 @@
-from .models import Board
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import Http404
+from .models import Board
 from .forms import BoardForm
 from accounts.models import User
 from django.core.paginator import Paginator
 from tag.models import Tag
-from .models import Comment
 
 def board_write(request):
     if not request.session.get('user'):
@@ -35,13 +34,11 @@ def board_write(request):
     else:
         form = BoardForm()
     return render(request, 'board_write.html', {'form':form})
-    
+
 def board_detail(request, pk):
     board = get_object_or_404(Board, pk=pk)
-    comments = CommentForm()
-    comment_view = Comment.objects.filter(post=pk)
-    return render(request, 'board_detail.html',{'board':board, 'comments':comments, 'comment_view':comment_view})
-    
+    return render(request, 'board_detail.html',{'board':board})
+
 def board_list(request):
     all_boards = Board.objects.all().order_by('-id')
     page = int(request.GET.get('p', 1))
@@ -49,14 +46,3 @@ def board_list(request):
     boards = paginator.get_page(page)
 
     return render(request, 'board_list.html', {'boards':boards})
-
-def comment_write(request, board_id):
-    comment_write = CommentForm(request.POST)
-    user_id = request.session['user']
-    user = User.objects.get(pk=user_id)
-    if comment_write.is_valid():
-        comments = comment_write.save(commit=False)
-        comments.post = get_object_or_404(Board, pk=board_id)
-        comments.author = user
-        comments.save()
-    return redirect('board_detail', board_id)
