@@ -4,7 +4,8 @@ from django.http import Http404
 from .forms import BoardForm
 from accounts.models import User
 from django.core.paginator import Paginator
-
+from tag.models import Tag
+from .models import Comment
 
 def board_write(request):
     if not request.session.get('user'):

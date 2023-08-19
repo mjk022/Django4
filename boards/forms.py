@@ -1,4 +1,5 @@
 from django import forms
+from .models import Comment
 
 class BoardForm(forms.Form):
     title = forms.CharField(
