@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import User, Predict
 from django.http import HttpResponse
-from .models import User
 from django.contrib.auth.hashers import make_password, check_password
 from .forms import LoginForm
-
+from django.http.request import HttpRequest
+from joblib import load
+import pandas as pd
 
 def home(request):
     user_id = request.session.get('user')
@@ -11,7 +13,8 @@ def home(request):
         user = User.objects.get(pk = user_id)
         return HttpResponse("Hello! %s님" % user)
     else:
-        return HttpResponse("로그인 해주세요!")
+        return render(request, 'index.html')
+
 
 def register(request):
     if request.method == 'GET':
@@ -26,9 +29,11 @@ def register(request):
         err_data={}
         if not(username and useremail and password and re_password):
             err_data['error'] = '모든 값을 입력해주세요.'
+            return render(request, 'register.html', err_data)
         
         elif password != re_password:
             err_data['error'] = '비밀번호가 다릅니다.'
+            return render(request, 'register.html', err_data)
         
         else:
             user = User(
@@ -37,8 +42,7 @@ def register(request):
                 password=make_password(password),
             )
             user.save()
-
-        return render(request, 'register.html', err_data)
+            return redirect('/')
 
 def login(request):
     if request.method == 'POST':
@@ -55,3 +59,32 @@ def logout(request):
         del(request.session['user'])
     return redirect('/')
 
+
+def predict(request:HttpRequest, *args, **kwargs):
+    if request.method == "POST":
+        predict = Predict()
+        predict.first = request.POST['first']
+        predict.second = request.POST['second']
+        predict.third = request.POST['third']
+        predict.fourth = request.POST['fourth']
+
+        model = load('accounts\house.joblib')
+
+        input_variables = pd.DataFrame([[predict.first, predict.second, predict.third, predict.fourth]],
+                        columns=['금리', '국내총생산', '대출금리', '아파트거래량'],
+                        dtype='float',
+                        index=['input'])
+
+        prediction = model.predict(input_variables)[0]
+
+        context = {
+        "first" : predict.first,
+        "second" : predict.second,
+        "third" : predict.third,
+        "fourth" : predict.fourth,
+        "prediction" : prediction
+        }
+
+        return render(request, 'index.html', context=context)
+    
+    return render(request, 'index.html')

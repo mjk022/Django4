@@ -1,48 +1,129 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import Http404
-from .models import Board
+from .models import Board, Predict
 from .forms import BoardForm
 from accounts.models import User
 from django.core.paginator import Paginator
-from tag.models import Tag
+# from .models import Tag
+#from tag.models import Tag
+from django.http.request import HttpRequest
+import pandas as pd
+from joblib import load
+import joblib
+import tarfile
+import pickle
+import tensorflow as tf
+from keras.layers import *
+from keras.models import *
+from keras import backend as K
 
-def board_write(request):
-    if not request.session.get('user'):
-        return redirect('/accounts/login')
+def board_main(request):
+    redirect('/')
 
-    if request.method =='POST': 
-        form = BoardForm(request.POST)
-        if form.is_valid():
-            user_id = request.session.get('user')
-            user = User.objects.get(pk=user_id)
-            tags = form.cleaned_data['tags'].split(',')
+def test(request):
+    return render(request, 'test.html')
 
-            board=Board()
-            board.title = form.cleaned_data['title']
-            board.contents = form.cleaned_data['contents']
-            board.writer = user
-            board.save()
+def apart(request):
+    return render(request, 'apart.html')
 
-            for tag in tags:
-                if not tag:
-                    continue
-                _tag, _ = Tag.objects.get_or_create(name=tag)
-                board.tags.add(_tag)
-            
-            
-            return redirect('/boards/list')
-    else:
-        form = BoardForm()
-    return render(request, 'board_write.html', {'form':form})
+def lda_21_1(request):
+    return render(request, 'lda/lda_21_1.html') 
 
-def board_detail(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    return render(request, 'board_detail.html',{'board':board})
+def lda_21_2(request):
+    return render(request, 'lda/lda_21_2.html') 
 
-def board_list(request):
-    all_boards = Board.objects.all().order_by('-id')
-    page = int(request.GET.get('p', 1))
-    paginator = Paginator(all_boards, 5)
-    boards = paginator.get_page(page)
+def lda_21_3(request):
+    return render(request, 'lda/lda_21_3.html') 
 
-    return render(request, 'board_list.html', {'boards':boards})
+def lda_21_4(request):
+    return render(request, 'lda/lda_21_4.html') 
+
+def lda_21_5(request):
+    return render(request, 'lda/lda_21_5.html') 
+
+def lda_21_6(request):
+    return render(request, 'lda/lda_21_6.html')    
+
+def lda_21_7(request):
+    return render(request, 'lda/lda_21_7.html') 
+
+def lda_21_8(request):
+    return render(request, 'lda/lda_21_8.html') 
+
+def lda_21_9(request):
+    return render(request, 'lda/lda_21_9.html') 
+
+def lda_21_10(request):
+    return render(request, 'lda/lda_21_10.html') 
+
+def lda_21_11(request):
+    return render(request, 'lda/lda_21_11.html') 
+
+def lda_21_12(request):
+    return render(request, 'lda/lda_21_12.html') 
+
+def lda_22_1(request):
+    return render(request, 'lda/lda_22_1.html') 
+
+def lda_22_2(request):
+    return render(request, 'lda/lda_22_2.html')
+
+def lda_22_3(request):
+    return render(request, 'lda/lda_22_3.html')
+
+def lda_22_4(request):
+    return render(request, 'lda/lda_22_4.html')
+
+def lda_22_5(request):
+    return render(request, 'lda/lda_22_5.html')
+
+def lda_22_6(request):
+    return render(request, 'lda/lda_22_6.html')
+
+def lda_22_7(request):
+    return render(request, 'lda/lda_22_7.html')
+
+def lda_22_8(request):
+    return render(request, 'lda/lda_22_8.html')
+
+def lda_22_9(request):
+    return render(request, 'lda/lda_22_9.html')
+
+def lda_22_10(request):
+    return render(request, 'lda/lda_22_10.html')
+
+def lda_22_11(request):
+    return render(request, 'lda/lda_22_11.html')
+
+def lda_22_12(request):
+    return render(request, 'lda/lda_22_12.html')           
+
+
+def predict(request:HttpRequest, *args, **kwargs):
+    if request.method == "POST":
+        predict = Predict()
+        predict.first = request.POST['first']
+        predict.second = request.POST['second']
+        predict.third = request.POST['third']
+        predict.fourth = request.POST['fourth']
+
+        model = load('boards\house.joblib')
+
+        input_variables = pd.DataFrame([[predict.first, predict.second, predict.third, predict.fourth]],
+                        columns=['금리', '국내총생산', '대출금리', '매매 거래량'],
+                        dtype='float',
+                        index=['input'])
+
+        prediction = model.predict(input_variables)[0]
+
+        context = {
+        "first" : predict.first,
+        "second" : predict.second,
+        "third" : predict.third,
+        "fourth" : predict.fourth,
+        "prediction" : prediction
+        }
+
+        return render(request, 'predict.html', context=context)
+    
+    return render(request, 'predict.html')
