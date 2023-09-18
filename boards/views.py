@@ -26,6 +26,18 @@ def test(request):
 def apart(request):
     return render(request, 'apart.html')
 
+def map1(request):
+    return render(request, '아파트실거래가_1분위.html')
+
+def map2(request):
+    return render(request, '아파트실거래가_2분위.html')
+
+def map3(request):
+    return render(request, '아파트실거래가_3분위.html')
+
+def map4(request):
+    return render(request, '아파트실거래가_4분위.html')
+
 def lda_21_1(request):
     return render(request, 'lda/lda_21_1.html') 
 

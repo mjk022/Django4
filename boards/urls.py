@@ -30,5 +30,9 @@ urlpatterns = [
     path('lda_22_9', views.lda_22_9, name="lda_22_9"),
     path('lda_22_10', views.lda_22_10, name="lda_22_10"),
     path('lda_22_11', views.lda_22_11, name="lda_22_11"),
-    path('lda_22_12', views.lda_22_12, name="lda_22_12")
+    path('lda_22_12', views.lda_22_12, name="lda_22_12"),
+    path('아파트실거래가_1분위', views.map1, name="아파트실거래가_1분위"),
+    path('아파트실거래가_2분위', views.map2, name="아파트실거래가_2분위"),
+    path('아파트실거래가_3분위', views.map3, name="아파트실거래가_3분위"),
+    path('아파트실거래가_4분위', views.map4, name="아파트실거래가_4분위")
 ]
