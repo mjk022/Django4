@@ -1,21 +1,16 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http import Http404
-from .models import Board, Predict
-from .forms import BoardForm
+from .models import Board, Predict, News21_1, News21_2, News21_3, News21_4, News22_1, News22_2, News22_3, News22_4
 from accounts.models import User
-from django.core.paginator import Paginator
 # from .models import Tag
 #from tag.models import Tag
 from django.http.request import HttpRequest
 import pandas as pd
 from joblib import load
-import joblib
-import tarfile
-import pickle
-import tensorflow as tf
 from keras.layers import *
 from keras.models import *
 from keras import backend as K
+import csv
+
 
 def board_main(request):
     redirect('/')
@@ -139,3 +134,40 @@ def predict(request:HttpRequest, *args, **kwargs):
         return render(request, 'predict.html', context=context)
     
     return render(request, 'predict.html')
+
+def news(request):
+    
+
+    return render(request, 'news.html')
+
+def news21_1(request):
+    class_object = News21_1.objects.all()
+    return render(request, 'news/news21_1.html', {'class_object':class_object})
+
+def news21_2(request):
+    class_object = News21_2.objects.all()
+    return render(request, 'news/news21_2.html', {'class_object':class_object})
+
+def news21_3(request):
+    class_object = News21_3.objects.all()
+    return render(request, 'news/news21_3.html', {'class_object':class_object})
+
+def news21_4(request):
+    class_object = News21_4.objects.all()
+    return render(request, 'news/news21_4.html', {'class_object':class_object})
+
+def news22_1(request):
+    class_object = News22_1.objects.all()
+    return render(request, 'news/news22_1.html', {'class_object':class_object})
+
+def news22_2(request):
+    class_object = News22_2.objects.all()
+    return render(request, 'news/news22_2.html', {'class_object':class_object})
+
+def news22_3(request):
+    class_object = News22_3.objects.all()
+    return render(request, 'news/news22_3.html', {'class_object':class_object})
+
+def news22_4(request):
+    class_object = News22_4.objects.all()
+    return render(request, 'news/news22_4.html', {'class_object':class_object})

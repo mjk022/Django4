@@ -20,3 +20,54 @@ class Predict(models.Model):
     second = models.FloatField()
     third = models.FloatField()
     fourth = models.FloatField()
+
+class News21_1(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+    def __str__(self):
+        return "날짜 : " + self.date + " 제목 : " + self.title + " 내용 : " + self.description + " 링크 : " + self.url
+    
+class News21_2(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News21_3(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News21_4(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News22_1(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News22_2(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News22_3(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)
+
+class News22_4(models.Model):
+    date = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.CharField(max_length=180)
+    url = models.CharField(max_length=100)

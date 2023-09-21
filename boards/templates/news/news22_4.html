@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% csrf_token %}
+    <h2>뉴스 확인</h2>
+    {% for class in class_object %}
+        <div>날짜 : {{class.date}} 제목 : {{class.title}} 내용 : {{class.description|truncatechars:70}} url : {{class.url}}</div>
+    {% endfor %}
+</body>
+</html>

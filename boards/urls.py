@@ -34,5 +34,14 @@ urlpatterns = [
     path('아파트실거래가_1분위', views.map1, name="아파트실거래가_1분위"),
     path('아파트실거래가_2분위', views.map2, name="아파트실거래가_2분위"),
     path('아파트실거래가_3분위', views.map3, name="아파트실거래가_3분위"),
-    path('아파트실거래가_4분위', views.map4, name="아파트실거래가_4분위")
+    path('아파트실거래가_4분위', views.map4, name="아파트실거래가_4분위"),
+    path('news', views.news, name="news"),
+    path('news21_1', views.news21_1, name="news21_1"),
+    path('news21_2', views.news21_2, name="news21_2"),
+    path('news21_3', views.news21_3, name="news21_3"),
+    path('news21_4', views.news21_4, name="news21_4"),  
+    path('news22_1', views.news22_1, name="news22_1"),
+    path('news22_2', views.news22_2, name="news22_2"),
+    path('news22_3', views.news22_3, name="news22_3"),
+    path('news22_4', views.news22_4, name="news22_4")
 ]

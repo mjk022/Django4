@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'boards',
     'tag',
     'django_pandas',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [

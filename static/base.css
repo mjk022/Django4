@@ -1,3 +1,25 @@
+body {
+    font-family: 'Nanum Pen Script', cursive;
+    font-family: 'Orbit', sans-serif;
+}
+
+#back {
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    height : 500px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5)), url("https://i.ibb.co/TRy5J7h/wallpaperbetter-1.jpg");
+
+}
+
+.carousel-caption{
+    color: black;
+}
+
 li {
     padding-right: 2rem;
 }
@@ -17,4 +39,13 @@ a:hover {
     min-height: 50px;
     margin-bottom: 20px;
     border: 1px solid transparent;
+}
+
+.carousel {
+    max-width: 45%;
+}
+
+#wd {
+    display: flex;
+    justify-content: space-around;
 }
