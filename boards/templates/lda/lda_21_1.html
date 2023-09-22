@@ -11,47 +11,55 @@
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="/static/base.css" />
   <title>Document</title>
+  
 </head>
 
 <body>
+  
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-    <ul class="navbar-nav" style="position: relative;">
+    <ul class="navbar-nav">
         <li class="ps-3 nav-item text-light"><a href="{% url 'accounts:home' %}">HOME</a></li>
         <li class="nav-item text-light"><a href="{% url 'boards:test' %}">LDA</a></li>
         <li class="nav-item text-light"><a href="{% url 'boards:apart' %}">Apart</a></li>
+        <li class="nav-item text-light"><a href="{% url 'boards:아파트실거래가_1분위' %}">map1</a></li>
+        <li class="nav-item text-light"><a href="{% url 'boards:아파트실거래가_2분위' %}">map2</a></li>
+        <li class="nav-item text-light"><a href="{% url 'boards:아파트실거래가_3분위' %}">map3</a></li>
+        <li class="nav-item text-light"><a href="{% url 'boards:아파트실거래가_4분위' %}">map4</a></li>
+        <li class="nav-item text-light"><a href="{% url 'boards:news' %}">뉴스 기사</a></li>
     </ul>
-</nav>
+  </nav>
 
 <div id="ldavis_el2251222851240423042386991146" style="background-color:white;"></div>
 
-<div class="year">
-  <div class="al">
-      <a href="{% url 'boards:lda_21_1' %}">21년 1월 LDA</a>
-      <a href="{% url 'boards:lda_21_2' %}">21년 2월 LDA</a>
-      <a href="{% url 'boards:lda_21_3' %}">21년 3월 LDA</a>
-      <a href="{% url 'boards:lda_21_4' %}">21년 4월 LDA</a>
-      <a href="{% url 'boards:lda_21_5' %}">21년 5월 LDA</a>
-      <a href="{% url 'boards:lda_21_6' %}">21년 6월 LDA</a>
-      <a href="{% url 'boards:lda_21_7' %}">21년 7월 LDA</a>
-      <a href="{% url 'boards:lda_21_8' %}">21년 8월 LDA</a>
-      <a href="{% url 'boards:lda_21_9' %}">21년 9월 LDA</a>
-      <a href="{% url 'boards:lda_21_10' %}">21년 10월 LDA</a>
-      <a href="{% url 'boards:lda_21_11' %}">21년 11월 LDA</a>
-      <a href="{% url 'boards:lda_21_12' %}">21년 12월 LDA</a>
-      <a href="{% url 'boards:lda_22_1' %}">22년 1월 LDA</a>
-      <a href="{% url 'boards:lda_22_2' %}">22년 2월 LDA</a>
-      <a href="{% url 'boards:lda_22_3' %}">22년 3월 LDA</a>
-      <a href="{% url 'boards:lda_22_4' %}">22년 4월 LDA</a>
-      <a href="{% url 'boards:lda_22_5' %}">22년 5월 LDA</a>
-      <a href="{% url 'boards:lda_22_6' %}">22년 6월 LDA</a>
-      <a href="{% url 'boards:lda_22_7' %}">22년 7월 LDA</a>
-      <a href="{% url 'boards:lda_22_8' %}">22년 8월 LDA</a>
-      <a href="{% url 'boards:lda_22_9' %}">22년 9월 LDA</a>
-      <a href="{% url 'boards:lda_22_10' %}">22년 10월 LDA</a>
-      <a href="{% url 'boards:lda_22_11' %}">22년 11월 LDA</a>
-      <a href="{% url 'boards:lda_22_12' %}">22년 12월 LDA</a>
-  </div>
-</div>
+<table class="table table-striped" style="text-align: center;">
+  <thead><tr><td>월간 LDA 보기</td></tr></thead>
+  <tbody>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_1' %}" style="color: RGB(11, 110, 253); font-weight: 600;">21년 1월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_2' %}">21년 2월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_3' %}">21년 3월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_4' %}">21년 4월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_5' %}">21년 5월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_6' %}">21년 6월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_7' %}">21년 7월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_8' %}">21년 8월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_9' %}">21년 9월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_10' %}">21년 10월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_11' %}">21년 11월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_21_12' %}">21년 12월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_1' %}">22년 1월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_2' %}">22년 2월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_3' %}">22년 3월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_4' %}">22년 4월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_5' %}">22년 5월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_6' %}">22년 6월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_7' %}">22년 7월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_8' %}">22년 8월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_9' %}">22년 9월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_10' %}">22년 10월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_11' %}">22년 11월 LDA</a></td></tr>
+  <tr><td><a class="ta" href="{% url 'boards:lda_22_12' %}">22년 12월 LDA</a></td></tr>
+  </tbody>
+</table>
 
 <script type="text/javascript">
 
