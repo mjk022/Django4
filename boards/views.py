@@ -33,6 +33,9 @@ def map3(request):
 def map4(request):
     return render(request, '아파트실거래가_4분위.html')
 
+def 부동산실거래가(request):
+    return render(request, 'news/news21_1.html')
+
 def lda_21_1(request):
     return render(request, 'lda/lda_21_1.html') 
 
@@ -142,6 +145,7 @@ def news(request):
 
 def news21_1(request):
     class_object = News21_1.objects.all()
+
     return render(request, 'news/news21_1.html', {'class_object':class_object})
 
 def news21_2(request):
